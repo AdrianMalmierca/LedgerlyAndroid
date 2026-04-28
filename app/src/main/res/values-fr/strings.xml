@@ -1,0 +1,25 @@
+<resources>
+    <string name="app_name">Ledgerly</string>
+
+    <!--Categories-->
+    <string name="category_food">Alimentation</string>
+    <string name="category_transport">Transport</string>
+    <string name="category_bills">Factures</string>
+    <string name="category_other">Autre</string>
+
+    <!--Auth-->
+    <string name="login_title">Ledgerly</string>
+    <string name="login_subtitle">Suivez vos dépenses</string>
+    <string name="field_email">Adresse e-mail</string>
+    <string name="field_password">Mot de passe</string>
+    <string name="field_confirm_password">Confirmer le mot de passe</string>
+    <string name="login_button">Se connecter</string>
+    <string name="signup_button">S\'inscrire</string>
+    <string name="signup_title">Créer un compte</string>
+    <string name="signup_subtitle">Commencez à suivre vos dépenses</string>
+    <string name="no_account_label">Pas encore de compte ?</string>
+    <string name="have_account_label">Vous avez déjà un compte ?</string>
+    <string name="signup_link">S\'inscrire</string>
+    <string name="login_link">Se connecter</string>
+    <string name="passwords_dont_match">Les mots de passe ne correspondent pas</string>
+</resources>
