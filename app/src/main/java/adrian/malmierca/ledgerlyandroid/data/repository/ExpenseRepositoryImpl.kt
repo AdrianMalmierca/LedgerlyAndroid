@@ -19,6 +19,7 @@ class ExpenseRepositoryImpl @Inject constructor(
     private val auth: FirebaseAuth
 ) : ExpenseRepository {
 
+    //we put get to always have the current user, otherwise it could change, we dont save the value in memory, we recalculate it
     private val currentUserId get() = auth.currentUser?.uid ?: ""
 
     private fun userExpensesCollection() =

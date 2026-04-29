@@ -5,49 +5,63 @@ import android.os.Build
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.darkColorScheme
-import androidx.compose.material3.dynamicDarkColorScheme
-import androidx.compose.material3.dynamicLightColorScheme
 import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.platform.LocalContext
-
-private val DarkColorScheme = darkColorScheme(
-    primary = Purple80,
-    secondary = PurpleGrey80,
-    tertiary = Pink80
-)
+import androidx.compose.runtime.SideEffect
+import androidx.compose.ui.graphics.toArgb
+import androidx.compose.ui.platform.LocalView
+import androidx.core.view.WindowCompat
 
 private val LightColorScheme = lightColorScheme(
-    primary = Purple40,
-    secondary = PurpleGrey40,
-    tertiary = Pink40
+    primary = LedgerlyPrimary,
+    onPrimary = LedgerlyOnPrimary,
+    primaryContainer = LedgerlyPrimaryContainer,
+    onPrimaryContainer = LedgerlyOnPrimaryContainer,
+    secondary = LedgerlySecondary,
+    onSecondary = LedgerlyOnSecondary,
+    secondaryContainer = LedgerlySecondaryContainer,
+    onSecondaryContainer = LedgerlyOnSecondaryContainer,
+    tertiary = LedgerlyTertiary,
+    onTertiary = LedgerlyOnTertiary,
+    tertiaryContainer = LedgerlyTertiaryContainer,
+    onTertiaryContainer = LedgerlyOnTertiaryContainer,
+    error = LedgerlyError,
+    onError = LedgerlyOnError,
+    background = LedgerlyBackground,
+    onBackground = LedgerlyOnBackground,
+    surface = LedgerlySurface,
+    onSurface = LedgerlyOnSurface,
+    surfaceVariant = LedgerlySurfaceVariant,
+    onSurfaceVariant = LedgerlyOnSurfaceVariant,
+    outline = LedgerlyOutline
+)
 
-    /* Other default colors to override
-    background = Color(0xFFFFFBFE),
-    surface = Color(0xFFFFFBFE),
-    onPrimary = Color.White,
-    onSecondary = Color.White,
-    onTertiary = Color.White,
-    onBackground = Color(0xFF1C1B1F),
-    onSurface = Color(0xFF1C1B1F),
-    */
+private val DarkColorScheme = darkColorScheme(
+    primary = LedgerlyPrimaryDark,
+    onPrimary = LedgerlyOnPrimaryDark,
+    primaryContainer = LedgerlyPrimaryContainerDark,
+    onPrimaryContainer = LedgerlyOnPrimaryContainerDark,
+    background = LedgerlyBackgroundDark,
+    onBackground = LedgerlyOnBackgroundDark,
+    surface = LedgerlySurfaceDark,
+    onSurface = LedgerlyOnSurfaceDark
 )
 
 @Composable
 fun LedgerlyAndroidTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
-    // Dynamic color is available on Android 12+
-    dynamicColor: Boolean = true,
     content: @Composable () -> Unit
 ) {
-    val colorScheme = when {
-        dynamicColor && Build.VERSION.SDK_INT >= Build.VERSION_CODES.S -> {
-            val context = LocalContext.current
-            if (darkTheme) dynamicDarkColorScheme(context) else dynamicLightColorScheme(context)
-        }
+    val colorScheme = if (darkTheme) DarkColorScheme else LightColorScheme
 
-        darkTheme -> DarkColorScheme
-        else -> LightColorScheme
+    val view = LocalView.current //access to the Andrid View from Compose
+    if (!view.isInEditMode) { //to not execute in the android preview, to avoid errors in the editor
+        SideEffect { //access to the app window
+            val window = (view.context as Activity).window //access to some system stuff like the statusbar
+            window.statusBarColor = colorScheme.primary.toArgb()
+            //to put the icons dark with light background or light icons with dark background
+            WindowCompat.getInsetsController(window, view).isAppearanceLightStatusBars = !darkTheme
+        }
     }
 
     MaterialTheme(
