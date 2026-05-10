@@ -100,10 +100,40 @@ class ExpenseViewModel @Inject constructor(
         }
     }
 
-    fun deleteAccount() {
+    fun deleteAccount(password: String, onComplete: () -> Unit, onError: (String) -> Unit) {
         viewModelScope.launch {
-            val userId = authRepository.getCurrentUserId() ?: return@launch
-            expenseRepository.deleteAllExpensesForUser(userId)
+            val userId = authRepository.getCurrentUserId() ?: run {
+                onError("No user logged in")
+                return@launch
+            }
+
+            val email = authRepository.getCurrentUserEmail() ?: run {
+                onError("No email found")
+                return@launch
+            }
+
+            //1. Reauthenticated
+            val reauthResult = authRepository.reauthenticate(email, password)
+            if (reauthResult.isFailure) {
+                onError(reauthResult.exceptionOrNull()?.localizedMessage ?: "Wrong password")
+                return@launch
+            }
+
+            //2. Delete th expenses before delete the account
+            val deleteExpensesResult = expenseRepository.deleteAllExpensesForUser(userId)
+            if (deleteExpensesResult.isFailure) {
+                onError(deleteExpensesResult.exceptionOrNull()?.localizedMessage ?: "Could not delete expenses")
+                return@launch
+            }
+
+            //3. Delete account
+            val deleteResult = authRepository.deleteAccount()
+            if (deleteResult.isFailure) {
+                onError(deleteResult.exceptionOrNull()?.localizedMessage ?: "Could not delete account")
+                return@launch
+            }
+
+            onComplete()
         }
     }
 

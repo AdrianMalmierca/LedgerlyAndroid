@@ -14,7 +14,7 @@ android {
 
     defaultConfig {
         applicationId = "adrian.malmierca.ledgerlyandroid"
-        minSdk = 24
+        minSdk = 26
         targetSdk = 35
         versionCode = 1
         versionName = "1.0"
@@ -98,4 +98,10 @@ dependencies {
 
     //Material icons
     implementation("androidx.compose.material:material-icons-extended")
+
+    //Charts
+    implementation("co.yml:ycharts:2.1.0")
+
+    //WorkManager
+    implementation("androidx.work:work-runtime-ktx:2.9.1")
 }

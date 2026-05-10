@@ -16,10 +16,41 @@
     <string name="login_button">Sign in</string>
     <string name="signup_button">Sign up</string>
     <string name="signup_title">Create account</string>
-    <string name="signup_subtitle">Sta∫rt tracking your expenses</string>
+    <string name="signup_subtitle">Start tracking your expenses</string>
     <string name="no_account_label">Don\'t have an account?</string>
     <string name="have_account_label">Already have an account?</string>
     <string name="signup_link">Sign up</string>
     <string name="login_link">Sign in</string>
     <string name="passwords_dont_match">Passwords don\'t match</string>
+
+    <!--Expenses-->
+    <string name="app_name_full">Ledgerly</string>
+    <string name="tab_expenses">Expenses</string>
+    <string name="tab_chart">Chart</string>
+    <string name="search_placeholder">Search expenses…</string>
+    <string name="new_expense_title">New expense</string>
+    <string name="field_title">Title</string>
+    <string name="field_amount">Amount</string>
+    <string name="picker_category">Category</string>
+    <string name="save_button">Save</string>
+    <string name="close_button">Close</string>
+    <string name="total_amount">Total</string>
+    <string name="expense_date">Date</string>
+    <string name="section_category">Category</string>
+    <string name="section_amount">Amount</string>
+    <string name="sync_button">Sync</string>
+    <string name="logout_button">Sign out</string>
+    <string name="delete_account_title">Delete account</string>
+    <string name="delete_account_message">This will permanently delete your account and all your expenses.</string>
+    <string name="delete_account_confirm">Delete</string>
+    <string name="cancel_button">Cancel</string>
+    <string name="no_expenses">No expenses yet</string>
+    <string name="settings_title">Settings</string>
+    <string name="settings_theme">Dark mode</string>
+    <string name="settings_notifications">Daily reminder</string>
+    <string name="settings_notification_time">Reminder time</string>
+    <string name="settings_currency">Currency</string>
+    <string name="settings_language">Language</string>
+    <string name="notification_title">Ledgerly</string>
+    <string name="notification_body">Don\'t forget to log your expenses today!</string>
 </resources>

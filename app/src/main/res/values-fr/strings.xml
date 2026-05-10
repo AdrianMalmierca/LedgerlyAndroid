@@ -22,4 +22,35 @@
     <string name="signup_link">S\'inscrire</string>
     <string name="login_link">Se connecter</string>
     <string name="passwords_dont_match">Les mots de passe ne correspondent pas</string>
+
+    <!--Expenses-->
+    <string name="app_name_full">Ledgerly</string>
+    <string name="tab_expenses">Dépenses</string>
+    <string name="tab_chart">Graphique</string>
+    <string name="search_placeholder">Rechercher…</string>
+    <string name="new_expense_title">Nouvelle dépense</string>
+    <string name="field_title">Titre</string>
+    <string name="field_amount">Montant</string>
+    <string name="picker_category">Catégorie</string>
+    <string name="save_button">Enregistrer</string>
+    <string name="close_button">Fermer</string>
+    <string name="total_amount">Total</string>
+    <string name="expense_date">Date</string>
+    <string name="section_category">Catégorie</string>
+    <string name="section_amount">Montant</string>
+    <string name="sync_button">Synchroniser</string>
+    <string name="logout_button">Se déconnecter</string>
+    <string name="delete_account_title">Supprimer le compte</string>
+    <string name="delete_account_message">Cela supprimera définitivement votre compte et toutes vos dépenses.</string>
+    <string name="delete_account_confirm">Supprimer</string>
+    <string name="cancel_button">Annuler</string>
+    <string name="no_expenses">Aucune dépense pour l\'instant</string>
+    <string name="settings_title">Paramètres</string>
+    <string name="settings_theme">Mode sombre</string>
+    <string name="settings_notifications">Rappel quotidien</string>
+    <string name="settings_notification_time">Heure du rappel</string>
+    <string name="settings_currency">Devise</string>
+    <string name="settings_language">Langue</string>
+    <string name="notification_title">Ledgerly</string>
+    <string name="notification_body">N\'oubliez pas d\'enregistrer vos dépenses aujourd\'hui !</string>
 </resources>
