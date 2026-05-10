@@ -43,6 +43,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import adrian.malmierca.ledgerlyandroid.R
 import adrian.malmierca.ledgerlyandroid.presentation.viewmodel.AuthViewModel
+import androidx.compose.ui.res.dimensionResource
 
 @Composable
 fun LoginScreen(
@@ -68,22 +69,22 @@ fun LoginScreen(
             modifier = Modifier
                 .fillMaxSize()
                 .padding(innerPadding)
-                .padding(horizontal = 24.dp)
+                .padding(horizontal = dimensionResource(R.dimen.padding_large))
                 .verticalScroll(rememberScrollState()),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            Spacer(modifier = Modifier.height(60.dp))
+            Spacer(modifier = Modifier.height(dimensionResource(R.dimen.spacer_space)))
 
             //Header
             Box(
                 modifier = Modifier
-                    .size(80.dp),
+                    .size(dimensionResource(R.dimen.box_size)),
                 contentAlignment = Alignment.Center
             ) {
                 Text(text = "💰", fontSize = 48.sp)
             }
 
-            Spacer(modifier = Modifier.height(16.dp))
+            Spacer(modifier = Modifier.height(dimensionResource(R.dimen.padding_medium)))
 
             Text(
                 text = stringResource(R.string.login_title),
@@ -97,7 +98,7 @@ fun LoginScreen(
                 color = MaterialTheme.colorScheme.onSurfaceVariant
             )
 
-            Spacer(modifier = Modifier.height(40.dp))
+            Spacer(modifier = Modifier.height(dimensionResource(R.dimen.space_text_form)))
 
             //Form
             OutlinedTextField(
@@ -107,11 +108,11 @@ fun LoginScreen(
                 leadingIcon = { Icon(Icons.Default.Email, contentDescription = null) },
                 keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Email),
                 singleLine = true,
-                shape = RoundedCornerShape(12.dp),
+                shape = RoundedCornerShape(dimensionResource(R.dimen.corner_radius_medium)),
                 modifier = Modifier.fillMaxWidth()
             )
 
-            Spacer(modifier = Modifier.height(14.dp))
+            Spacer(modifier = Modifier.height(dimensionResource(R.dimen.space_form)))
 
             OutlinedTextField(
                 value = password,
@@ -121,7 +122,7 @@ fun LoginScreen(
                 visualTransformation = PasswordVisualTransformation(),
                 keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
                 singleLine = true,
-                shape = RoundedCornerShape(12.dp),
+                shape = RoundedCornerShape(dimensionResource(R.dimen.corner_radius_medium)),
                 modifier = Modifier.fillMaxWidth()
             )
 
@@ -135,19 +136,19 @@ fun LoginScreen(
                 )
             }
 
-            Spacer(modifier = Modifier.height(24.dp))
+            Spacer(modifier = Modifier.height(dimensionResource(R.dimen.padding_large)))
 
             Button(
                 onClick = { viewModel.signIn(email, password) },
                 enabled = email.isNotEmpty() && password.isNotEmpty() && !uiState.isLoading,
-                shape = RoundedCornerShape(12.dp),
+                shape = RoundedCornerShape(dimensionResource(R.dimen.corner_radius_medium)),
                 modifier = Modifier
                     .fillMaxWidth()
-                    .height(50.dp)
+                    .height(dimensionResource(R.dimen.button_height))
             ) {
                 if (uiState.isLoading) {
                     CircularProgressIndicator(
-                        modifier = Modifier.size(20.dp),
+                        modifier = Modifier.size(dimensionResource(R.dimen.space_loading_state)),
                         color = MaterialTheme.colorScheme.onPrimary,
                         strokeWidth = 2.dp
                     )
@@ -165,7 +166,7 @@ fun LoginScreen(
             Row(
                 horizontalArrangement = Arrangement.Center,
                 verticalAlignment = Alignment.CenterVertically,
-                modifier = Modifier.padding(bottom = 32.dp)
+                modifier = Modifier.padding(dimensionResource(R.dimen.padding_xlarge))
             ) {
                 Text(
                     text = stringResource(R.string.no_account_label),

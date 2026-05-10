@@ -6,7 +6,6 @@ import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -15,6 +14,7 @@ import adrian.malmierca.ledgerlyandroid.ui.theme.CategoryBills
 import adrian.malmierca.ledgerlyandroid.ui.theme.CategoryFood
 import adrian.malmierca.ledgerlyandroid.ui.theme.CategoryOther
 import adrian.malmierca.ledgerlyandroid.ui.theme.CategoryTransport
+import androidx.compose.ui.res.dimensionResource
 
 @Composable
 fun CategoryChip(
@@ -37,7 +37,7 @@ fun CategoryChip(
             text = stringResource(labelRes),
             color = color,
             fontSize = 11.sp,
-            modifier = Modifier.padding(horizontal = 8.dp, vertical = 3.dp)
+            modifier = Modifier.padding(horizontal = dimensionResource(R.dimen.padding_small), vertical = dimensionResource(R.dimen.padding_xsmall))
         )
     }
 }

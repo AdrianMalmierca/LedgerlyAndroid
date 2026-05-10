@@ -1,15 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="padding_small">8dp</dimen>
+    <dimen name="padding_xsmall">3dp</dimen>
+    <dimen name="card_elevation">3dp</dimen>
+    <dimen name="row_h_arragment">4dp</dimen>
     <dimen name="padding_medium">16dp</dimen>
+    <dimen name="padding_xmedium">12dp</dimen>
     <dimen name="padding_large">24dp</dimen>
     <dimen name="padding_xlarge">32dp</dimen>
     <dimen name="corner_radius_small">8dp</dimen>
     <dimen name="corner_radius_medium">12dp</dimen>
+    <dimen name="corner_radius_big">16dp</dimen>
+    <dimen name="colum_vArrangementmedium">12dp</dimen>
+    <dimen name="colum_vArrangementsmall">8dp</dimen>
+    <dimen name="colum_vArrangementbig">16dp</dimen>
+    <dimen name="text_padding">8dp</dimen>
     <dimen name="corner_radius_large">16dp</dimen>
     <dimen name="icon_size_small">20dp</dimen>
     <dimen name="icon_size_medium">24dp</dimen>
     <dimen name="icon_size_large">48dp</dimen>
     <dimen name="button_height">50dp</dimen>
+    <dimen name="spacer_space">60dp</dimen>
     <dimen name="app_icon_size">80dp</dimen>
+    <dimen name="box_size">80dp</dimen>
+    <dimen name="box_height">180dp</dimen>
+    <dimen name="space_text_form">40dp</dimen>
+    <dimen name="space_form">14dp</dimen>
+    <dimen name="space_loading_state">20dp</dimen>
+    <dimen name="chart_height">200dp</dimen>
+    <dimen name="chart_bar_top_offset">40dp</dimen>
+    <dimen name="bar_large">30dp</dimen>
+    <dimen name="bar_large_text">30dp</dimen>
+    <dimen name="surface_size">30dp</dimen>
 </resources>

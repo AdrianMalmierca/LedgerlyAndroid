@@ -22,8 +22,8 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.KeyboardType
-import androidx.compose.ui.unit.dp
 import adrian.malmierca.ledgerlyandroid.R
+import androidx.compose.ui.res.dimensionResource
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -42,13 +42,13 @@ fun AddExpenseDialog(
         onDismissRequest = onDismiss,
         title = { Text(stringResource(R.string.new_expense_title)) },
         text = {
-            Column(verticalArrangement = Arrangement.spacedBy(12.dp)) {
+            Column(verticalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.colum_vArrangementmedium))) {
                 OutlinedTextField(
                     value = title,
                     onValueChange = { title = it },
                     label = { Text(stringResource(R.string.field_title)) },
                     singleLine = true,
-                    shape = RoundedCornerShape(12.dp),
+                    shape = RoundedCornerShape(dimensionResource(R.dimen.corner_radius_medium)),
                     modifier = Modifier.fillMaxWidth()
                 )
 
@@ -58,7 +58,7 @@ fun AddExpenseDialog(
                     label = { Text(stringResource(R.string.field_amount)) },
                     keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Decimal),
                     singleLine = true,
-                    shape = RoundedCornerShape(12.dp),
+                    shape = RoundedCornerShape(dimensionResource(R.dimen.corner_radius_medium)),
                     modifier = Modifier.fillMaxWidth()
                 )
 
@@ -74,7 +74,7 @@ fun AddExpenseDialog(
                         trailingIcon = {
                             ExposedDropdownMenuDefaults.TrailingIcon(expanded = expanded)
                         },
-                        shape = RoundedCornerShape(12.dp),
+                        shape = RoundedCornerShape(dimensionResource(R.dimen.corner_radius_medium)),
                         modifier = Modifier
                             .fillMaxWidth()
                             .menuAnchor(MenuAnchorType.PrimaryNotEditable) //yhe field is the menu anchor, where the dropdown is positioned

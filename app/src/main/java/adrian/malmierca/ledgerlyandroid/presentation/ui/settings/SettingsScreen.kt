@@ -40,7 +40,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import adrian.malmierca.ledgerlyandroid.R
@@ -49,6 +48,7 @@ import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.TextButton
+import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -89,9 +89,9 @@ fun SettingsScreen(
             modifier = Modifier
                 .fillMaxSize()
                 .padding(innerPadding)
-                .padding(16.dp)
+                .padding(dimensionResource(R.dimen.padding_medium))
                 .verticalScroll(rememberScrollState()),
-            verticalArrangement = Arrangement.spacedBy(16.dp)
+            verticalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.colum_vArrangementbig))
         ) {
             //Appearance
             SettingsCard {
@@ -119,7 +119,7 @@ fun SettingsScreen(
                 }
 
                 if (uiState.notificationsEnabled) {
-                    HorizontalDivider(modifier = Modifier.padding(vertical = 8.dp))
+                    HorizontalDivider(modifier = Modifier.padding(vertical = dimensionResource(R.dimen.padding_small)))
                     Text(
                         text = "${stringResource(R.string.settings_notification_time)}: ${uiState.notificationHour}:00",
                         style = MaterialTheme.typography.bodyMedium
@@ -140,7 +140,7 @@ fun SettingsScreen(
                     text = stringResource(R.string.settings_currency),
                     style = MaterialTheme.typography.titleSmall,
                     fontWeight = FontWeight.Medium,
-                    modifier = Modifier.padding(bottom = 8.dp)
+                    modifier = Modifier.padding(bottom = dimensionResource(R.dimen.text_padding))
                 )
                 ExposedDropdownMenuBox(
                     expanded = currencyExpanded,
@@ -153,7 +153,7 @@ fun SettingsScreen(
                         trailingIcon = {
                             ExposedDropdownMenuDefaults.TrailingIcon(expanded = currencyExpanded)
                         },
-                        shape = RoundedCornerShape(12.dp),
+                        shape = RoundedCornerShape(dimensionResource(R.dimen.corner_radius_medium)),
                         modifier = Modifier
                             .fillMaxWidth()
                             .menuAnchor(MenuAnchorType.PrimaryNotEditable)
@@ -177,7 +177,7 @@ fun SettingsScreen(
 
             //Delete account
             SettingsCard {
-                Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
+                Column(verticalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.colum_vArrangementmedium))) {
                     Text(
                         text = stringResource(R.string.delete_account_title),
                         style = MaterialTheme.typography.titleSmall,
@@ -189,13 +189,13 @@ fun SettingsScreen(
                         style = MaterialTheme.typography.bodySmall,
                         color = MaterialTheme.colorScheme.onSurfaceVariant
                     )
-                    Spacer(modifier = Modifier.height(4.dp))
+                    Spacer(modifier = Modifier.height(dimensionResource(R.dimen.padding_xsmall)))
                     Button(
                         onClick = { showDeleteAccountDialog = true },
                         colors = ButtonDefaults.buttonColors(
                             containerColor = MaterialTheme.colorScheme.error
                         ),
-                        shape = RoundedCornerShape(12.dp),
+                        shape = RoundedCornerShape(dimensionResource(R.dimen.corner_radius_medium)),
                         modifier = Modifier.fillMaxWidth()
                     ) {
                         Text(stringResource(R.string.delete_account_confirm))
@@ -213,7 +213,7 @@ fun SettingsScreen(
                 },
                 title = { Text(stringResource(R.string.delete_account_title)) },
                 text = {
-                    Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
+                    Column(verticalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.colum_vArrangementmedium))) {
                         Text(stringResource(R.string.delete_account_message))
                         OutlinedTextField(
                             value = passwordInput,
@@ -221,7 +221,7 @@ fun SettingsScreen(
                             label = { Text(stringResource(R.string.field_password)) },
                             visualTransformation = PasswordVisualTransformation(),
                             singleLine = true,
-                            shape = RoundedCornerShape(12.dp),
+                            shape = RoundedCornerShape(dimensionResource(R.dimen.corner_radius_medium)),
                             modifier = Modifier.fillMaxWidth()
                         )
 
@@ -267,13 +267,13 @@ fun SettingsScreen(
 fun SettingsCard(content: @Composable () -> Unit) {
     Card(
         modifier = Modifier.fillMaxWidth(),
-        shape = RoundedCornerShape(12.dp),
+        shape = RoundedCornerShape(dimensionResource(R.dimen.corner_radius_medium)),
         colors = CardDefaults.cardColors(
             containerColor = MaterialTheme.colorScheme.surface
         ),
-        elevation = CardDefaults.cardElevation(defaultElevation = 2.dp)
+        elevation = CardDefaults.cardElevation(defaultElevation = dimensionResource(R.dimen.card_elevation))
     ) {
-        Column(modifier = Modifier.padding(16.dp)) {
+        Column(modifier = Modifier.padding(dimensionResource(R.dimen.padding_medium))) {
             content() //full content inside, cn be aText foe example, image...
         }
     }

@@ -9,9 +9,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material3.Card
@@ -31,7 +29,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.unit.dp
 import adrian.malmierca.ledgerlyandroid.R
 import adrian.malmierca.ledgerlyandroid.domain.model.Expense
 import adrian.malmierca.ledgerlyandroid.presentation.ui.components.CategoryChip
@@ -39,6 +36,7 @@ import adrian.malmierca.ledgerlyandroid.ui.theme.CategoryBills
 import adrian.malmierca.ledgerlyandroid.ui.theme.CategoryFood
 import adrian.malmierca.ledgerlyandroid.ui.theme.CategoryOther
 import adrian.malmierca.ledgerlyandroid.ui.theme.CategoryTransport
+import androidx.compose.ui.res.dimensionResource
 import java.text.SimpleDateFormat
 import java.util.Locale
 
@@ -84,7 +82,7 @@ fun ExpenseDetailScreen(
             Box(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .height(180.dp),
+                    .height(dimensionResource(R.dimen.box_height)),
                 contentAlignment = Alignment.Center
             ) {
                 Column(horizontalAlignment = Alignment.CenterHorizontally) {
@@ -93,7 +91,7 @@ fun ExpenseDetailScreen(
                         style = MaterialTheme.typography.bodyMedium,
                         color = MaterialTheme.colorScheme.onSurfaceVariant
                     )
-                    Spacer(modifier = Modifier.height(8.dp))
+                    Spacer(modifier = Modifier.height(dimensionResource(R.dimen.padding_small)))
                     Text(
                         text = "%.2f €".format(expense.amount),
                         style = MaterialTheme.typography.displaySmall,
@@ -107,14 +105,14 @@ fun ExpenseDetailScreen(
             Card(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(16.dp),
-                shape = RoundedCornerShape(16.dp),
+                    .padding(dimensionResource(R.dimen.padding_medium)),
+                shape = RoundedCornerShape(dimensionResource(R.dimen.corner_radius_big)),
                 colors = CardDefaults.cardColors(
                     containerColor = MaterialTheme.colorScheme.surface
                 ),
-                elevation = CardDefaults.cardElevation(defaultElevation = 2.dp)
+                elevation = CardDefaults.cardElevation(defaultElevation = dimensionResource(R.dimen.card_elevation))
             ) {
-                Column(modifier = Modifier.padding(16.dp)) {
+                Column(modifier = Modifier.padding(dimensionResource(R.dimen.padding_medium))) {
                     Row(
                         modifier = Modifier.fillMaxWidth(),
                         horizontalArrangement = Arrangement.SpaceBetween,
@@ -128,9 +126,9 @@ fun ExpenseDetailScreen(
                         CategoryChip(category = expense.category)
                     }
 
-                    Spacer(modifier = Modifier.height(16.dp))
+                    Spacer(modifier = Modifier.height(dimensionResource(R.dimen.padding_medium)))
                     HorizontalDivider()
-                    Spacer(modifier = Modifier.height(16.dp))
+                    Spacer(modifier = Modifier.height(dimensionResource(R.dimen.padding_medium)))
 
                     DetailRow(
                         label = stringResource(R.string.expense_date),
@@ -138,9 +136,8 @@ fun ExpenseDetailScreen(
                             .format(expense.date)
                     )
 
-                    Spacer(modifier = Modifier.height(12.dp))
+                    Spacer(modifier = Modifier.height(dimensionResource(R.dimen.padding_xmedium)))
                     HorizontalDivider()
-                    Spacer(modifier = Modifier.height(12.dp))
 
                     DetailRow(
                         label = stringResource(R.string.section_category),
@@ -148,9 +145,9 @@ fun ExpenseDetailScreen(
                         valueColor = categoryColor
                     )
 
-                    Spacer(modifier = Modifier.height(12.dp))
+                    Spacer(modifier = Modifier.height(dimensionResource(R.dimen.padding_xmedium)))
                     HorizontalDivider()
-                    Spacer(modifier = Modifier.height(12.dp))
+                    Spacer(modifier = Modifier.height(dimensionResource(R.dimen.padding_xmedium)))
 
                     DetailRow(
                         label = stringResource(R.string.section_amount),

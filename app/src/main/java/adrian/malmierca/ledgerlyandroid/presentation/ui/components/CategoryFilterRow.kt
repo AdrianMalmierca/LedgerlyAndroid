@@ -12,8 +12,8 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.unit.dp
 import adrian.malmierca.ledgerlyandroid.R
+import androidx.compose.ui.res.dimensionResource
 
 @Composable
 fun CategoryFilterRow(
@@ -30,8 +30,8 @@ fun CategoryFilterRow(
 
     LazyRow(
         modifier = modifier,
-        horizontalArrangement = Arrangement.spacedBy(8.dp),
-        contentPadding = PaddingValues(horizontal = 16.dp)
+        horizontalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.padding_small)),
+        contentPadding = PaddingValues(horizontal = dimensionResource(R.dimen.padding_medium))
     ) {
         items(categories) { (key, labelRes) ->
             FilterChip(

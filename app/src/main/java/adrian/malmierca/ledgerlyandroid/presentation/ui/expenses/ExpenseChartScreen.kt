@@ -21,7 +21,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import adrian.malmierca.ledgerlyandroid.R
@@ -33,6 +32,7 @@ import adrian.malmierca.ledgerlyandroid.ui.theme.CategoryTransport
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.Canvas
 import androidx.compose.ui.graphics.nativeCanvas
+import androidx.compose.ui.res.dimensionResource
 
 @Composable
 fun BarChart(
@@ -43,16 +43,20 @@ fun BarChart(
     if (categoryTotals.isEmpty()) return
 
     val maxValue = categoryTotals.values.max()
+    val paddingLarge = dimensionResource(R.dimen.padding_large)
+    val barLarge = dimensionResource(R.dimen.bar_large)
+    val cornerRadius = dimensionResource(R.dimen.padding_xsmall)
+    val barLargetext = dimensionResource(R.dimen.bar_large_text)
 
     Canvas(
         modifier = modifier
             .fillMaxWidth()
-            .height(200.dp)
-            .padding(horizontal = 8.dp)
+            .height(dimensionResource(R.dimen.chart_height))
+            .padding(horizontal = dimensionResource(R.dimen.padding_small))
     ) {
         val barWidth = size.width / (categoryTotals.size * 2f)
         val spacing = barWidth
-        val maxBarHeight = size.height - 40.dp.toPx() //to px because canvas works with px no dp
+        val maxBarHeight = size.height - paddingLarge.toPx() //to px because canvas works with px no dp
 
         categoryTotals.entries.forEachIndexed { index, (category, value) ->
             val barHeight = if (maxValue > 0) (value / maxValue * maxBarHeight).toFloat() else 0f //we normalize
@@ -68,18 +72,18 @@ fun BarChart(
                 color = color,
                 topLeft = androidx.compose.ui.geometry.Offset(
                     x = x,
-                    y = size.height - barHeight - 30.dp.toPx() //start at the bottom of the canvas (size.height)
+                    y = size.height - barHeight - barLarge.toPx() //start at the bottom of the canvas (size.height)
                 // and we leave a small margin for the text on the top
                 ),
                 size = androidx.compose.ui.geometry.Size(barWidth, barHeight),
-                cornerRadius = androidx.compose.ui.geometry.CornerRadius(8.dp.toPx())
+                cornerRadius = androidx.compose.ui.geometry.CornerRadius(cornerRadius.toPx())
             )
 
             //Value on top of the bar
             drawContext.canvas.nativeCanvas.drawText( //access to androids canvas
                 "%.0f€".format(value),
                 x + barWidth / 2, //the beginning of the bar (x) and in the center
-                size.height - barHeight - 35.dp.toPx(), //from the bottom of the canvas, we go to the top
+                size.height - barHeight - barLargetext.toPx(), //from the bottom of the canvas, we go to the top
                 //and we add an extra margin so the text doesnt touch the bar
                 android.graphics.Paint().apply {
                     textAlign = android.graphics.Paint.Align.CENTER
@@ -117,8 +121,8 @@ fun ExpenseChartScreen(
         modifier = Modifier
             .fillMaxSize()
             .padding(bottomPadding)
-            .padding(16.dp),
-        verticalArrangement = Arrangement.spacedBy(16.dp)
+            .padding(dimensionResource(R.dimen.padding_medium)),
+        verticalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.colum_vArrangementmedium))
     ) {
         //Total card
         Card(
@@ -128,7 +132,7 @@ fun ExpenseChartScreen(
             )
         ) {
             Column(
-                modifier = Modifier.padding(16.dp),
+                modifier = Modifier.padding(dimensionResource(R.dimen.padding_medium)),
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
                 Text(
@@ -152,14 +156,14 @@ fun ExpenseChartScreen(
                 colors = CardDefaults.cardColors(
                     containerColor = MaterialTheme.colorScheme.surface
                 ),
-                elevation = CardDefaults.cardElevation(defaultElevation = 2.dp)
+                elevation = CardDefaults.cardElevation(defaultElevation = dimensionResource(R.dimen.card_elevation))
             ) {
-                Column(modifier = Modifier.padding(16.dp)) {
+                Column(modifier = Modifier.padding(dimensionResource(R.dimen.padding_medium))) {
                     Text(
                         text = stringResource(R.string.tab_chart),
                         style = MaterialTheme.typography.titleMedium,
                         fontWeight = FontWeight.SemiBold,
-                        modifier = Modifier.padding(bottom = 8.dp)
+                        modifier = Modifier.padding(bottom = dimensionResource(R.dimen.padding_small))
                     )
                     BarChart(
                         categoryTotals = categoryTotals,
@@ -169,17 +173,17 @@ fun ExpenseChartScreen(
                     Row(
                         modifier = Modifier
                             .fillMaxWidth()
-                            .padding(top = 8.dp),
+                            .padding(top = dimensionResource(R.dimen.padding_small)),
                         horizontalArrangement = Arrangement.SpaceEvenly
                     ) {
                         categoryTotals.keys.forEach { category ->
                             val color = categoryColors[category] ?: CategoryOther
                             Row(
                                 verticalAlignment = Alignment.CenterVertically,
-                                horizontalArrangement = Arrangement.spacedBy(4.dp)
+                                horizontalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.row_h_arragment))
                             ) {
                                 Surface(
-                                    modifier = Modifier.size(10.dp),
+                                    modifier = Modifier.size(dimensionResource(R.dimen.surface_size)),
                                     shape = CircleShape,
                                     color = color
                                 ) {}

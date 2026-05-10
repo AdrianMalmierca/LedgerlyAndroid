@@ -46,6 +46,7 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import adrian.malmierca.ledgerlyandroid.R
 import adrian.malmierca.ledgerlyandroid.presentation.viewmodel.AuthViewModel
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
+import androidx.compose.ui.res.dimensionResource
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -87,15 +88,15 @@ fun SignUpScreen(
             modifier = Modifier
                 .fillMaxSize()
                 .padding(innerPadding)
-                .padding(horizontal = 24.dp)
+                .padding(horizontal = dimensionResource(R.dimen.padding_large))
                 .verticalScroll(rememberScrollState()),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            Spacer(modifier = Modifier.height(20.dp))
+            Spacer(modifier = Modifier.height(dimensionResource(R.dimen.padding_medium)))
 
             Text(text = "💰", fontSize = 48.sp)
 
-            Spacer(modifier = Modifier.height(16.dp))
+            Spacer(modifier = Modifier.height(dimensionResource(R.dimen.padding_medium)))
 
             Text(
                 text = stringResource(R.string.signup_title),
@@ -109,7 +110,7 @@ fun SignUpScreen(
                 color = MaterialTheme.colorScheme.onSurfaceVariant
             )
 
-            Spacer(modifier = Modifier.height(32.dp))
+            Spacer(modifier = Modifier.height(dimensionResource(R.dimen.padding_xlarge)))
 
             OutlinedTextField(
                 value = email,
@@ -118,11 +119,11 @@ fun SignUpScreen(
                 leadingIcon = { Icon(Icons.Default.Email, contentDescription = null) },
                 keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Email),
                 singleLine = true,
-                shape = RoundedCornerShape(12.dp),
+                shape = RoundedCornerShape(dimensionResource(R.dimen.corner_radius_medium)),
                 modifier = Modifier.fillMaxWidth()
             )
 
-            Spacer(modifier = Modifier.height(14.dp))
+            Spacer(modifier = Modifier.height(dimensionResource(R.dimen.space_form)))
 
             OutlinedTextField(
                 value = password,
@@ -132,11 +133,11 @@ fun SignUpScreen(
                 visualTransformation = PasswordVisualTransformation(),
                 keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
                 singleLine = true,
-                shape = RoundedCornerShape(12.dp),
+                shape = RoundedCornerShape(dimensionResource(R.dimen.corner_radius_medium)),
                 modifier = Modifier.fillMaxWidth()
             )
 
-            Spacer(modifier = Modifier.height(14.dp))
+            Spacer(modifier = Modifier.height(dimensionResource(R.dimen.space_form)))
 
             OutlinedTextField(
                 value = confirmPassword,
@@ -146,12 +147,12 @@ fun SignUpScreen(
                 visualTransformation = PasswordVisualTransformation(),
                 keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
                 singleLine = true,
-                shape = RoundedCornerShape(12.dp),
+                shape = RoundedCornerShape(dimensionResource(R.dimen.corner_radius_medium)),
                 modifier = Modifier.fillMaxWidth()
             )
 
             uiState.errorMessage?.let { error ->
-                Spacer(modifier = Modifier.height(8.dp))
+                Spacer(modifier = Modifier.height(dimensionResource(R.dimen.padding_small)))
                 Text(
                     text = if (error == "passwords_dont_match")
                         stringResource(R.string.passwords_dont_match)
@@ -162,7 +163,7 @@ fun SignUpScreen(
                 )
             }
 
-            Spacer(modifier = Modifier.height(24.dp))
+            Spacer(modifier = Modifier.height(dimensionResource(R.dimen.padding_large)))
 
             Button(
                 onClick = { viewModel.signUp(email, password, confirmPassword) },
@@ -171,11 +172,11 @@ fun SignUpScreen(
                 shape = RoundedCornerShape(12.dp),
                 modifier = Modifier
                     .fillMaxWidth()
-                    .height(50.dp)
+                    .height(dimensionResource(R.dimen.button_height))
             ) {
                 if (uiState.isLoading) {
                     CircularProgressIndicator(
-                        modifier = Modifier.size(20.dp),
+                        modifier = Modifier.size(dimensionResource(R.dimen.space_loading_state)),
                         color = MaterialTheme.colorScheme.onPrimary,
                         strokeWidth = 2.dp
                     )
@@ -192,7 +193,7 @@ fun SignUpScreen(
             Row(
                 horizontalArrangement = Arrangement.Center,
                 verticalAlignment = Alignment.CenterVertically,
-                modifier = Modifier.padding(bottom = 32.dp)
+                modifier = Modifier.padding(dimensionResource(R.dimen.padding_xlarge))
             ) {
                 Text(
                     text = stringResource(R.string.have_account_label),
